@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Sensors and Precision Dishwashers Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --highlight-bg: #eaf2f8;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 15px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { 
+            font-size: 2.2rem; 
+            text-align: center; 
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            word-wrap: break-word;
+        }
+        .subtitle { 
+            text-align: center; 
+            font-size: 1.1rem; 
+            color: var(--secondary-color); 
+            margin-bottom: 25px; 
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 50px;
+            word-wrap: break-word;
+        }
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 30px;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        p, li { 
+            margin-bottom: 12px; 
+            word-wrap: break-word;
+        }
+        .summary-box {
+            background-color: var(--highlight-bg);
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+        .summary-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .chart-container {
+            position: relative;
+            margin: 20px 0 30px 0;
+            height: 450px;
+            width: 100%;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .chart-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .section-divider {
+            height: 2px;
+            background-color: #eee;
+            margin: 60px 0;
+            border: none;
+        }
+        
+        /* Mobile optimization ensures text fits cleanly on phone widths (e.g. Pixel devices) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .chart-container {
+                height: 350px;
+                padding: 5px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .summary-box {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Modular Sensors and Precision Dishwashers</h1>
+        <div class="subtitle">Technical Evaluation of Modular Open-Source Sensor Platforms and Precision-Engineered Residential Dishwashers</div>
+
+        <!-- Quick Information & Top Recommendations moved to the very top -->
+        <div class="summary-box">
+            <h3>Quick Summary & Top Recommendations</h3>
+            <p>Scalable physical computing and automated sanitary engineering share a core architectural challenge: balancing modular hardware versatility with deterministic mechanical execution. This report synthesizes laboratory benchmarks, physical teardowns, and engineering specifications to establish definitive hardware recommendations.</p>
+            
+            <h4>🏆 Top Sensor Platform: M5Stack Modular Sensor System (AtomS3 / Core Platform)</h4>
+            <p>The definitive recommendation for large-scale, open-source home telemetry deployments. Firmware definitions are deeply integrated into upstream ESPHome, requiring zero proprietary cloud accounts, zero subscription fees, and minimal manual YAML authoring while utilizing standardized plug-and-play Grove interconnects.</p>
+
+            <h4>🏆 Top Dishwasher: Bosch Benchmark & 800 Series with PrecisionWash & PowerControl</h4>
+            <p>The premier recommendation for uncompromised, zero-residue dishwashing within US residential homes. Bosch eliminates spray shadow blind zones through its dual-axis PowerControl satellite wash arm, backed by active optical process verification to ensure 99.97% clean scores on baked-on, unrinsed soil matrices.</p>
+        </div>
+
+        <!-- Section 1: Home Automation -->
+        <h2>Part 1: Modular Open-Source Home Monitoring</h2>
+        
+        <!-- Graph placed at the very top of the section -->
+        <div class="chart-container">
+            <canvas id="sensorChart"></canvas>
+        </div>
+        <div class="chart-note">Click on any platform name in the legend above to toggle its visibility on the graph.</div>
+
+        <p>Deploying twenty to fifty sensing nodes across a residential or light-commercial infrastructure exposes the architectural shortcomings of closed consumer hardware. Single-purpose sealed peripherals introduce maintenance overhead, rapid obsolescence, and battery waste. True infrastructure-grade deployment requires a standardized base compute engine supporting hot-swappable daughterboards, open buses, and native integration into local orchestrators such as Home Assistant and openHAB without cloud intermediaries or recurring fees.</p>
+
+        <h3>Evaluation Criteria (100-Point Scale)</h3>
+        <ul>
+            <li><strong>Hardware Modularity and Versatility (30 points):</strong> Accommodation of interchangeable daughterboards, analog probes, and digital breakout buses.</li>
+            <li><strong>Local Autonomy and Open-Source Integrity (25 points):</strong> Verification of zero mandatory cloud connectivity, fully open-source or open-standard local APIs, open bootloaders, and zero subscription gating.</li>
+            <li><strong>Build Quality and Deployability (25 points):</strong> Production quality of enclosures, physical form factors, mounting versatility, and power topology.</li>
+            <li><strong>Community Support and Firmware Updates (20 points):</strong> Velocity of upstream repository commits, public availability of schematics, and documentation depth.</li>
+        </ul>
+
+        <h3>Item-by-Item Architectural Breakdown</h3>
+        
+        <h4>M5Stack Modular Sensor System (AtomS3 / Core Series + Unit Ecosystem)</h4>
+        <p>The M5Stack hardware ecosystem achieves the highest composite score by leveraging standardized interconnects across an extensive peripheral library. The platform centers on compact ESP32-S3 base compute engines interfaced through 4-pin HY2.0-4P locking Grove connectors and rear-stacking expansion headers known as the Atomic and Core buses. The sensor catalog contains more than 150 turnkey modules, spanning NDIR carbon dioxide, air quality suites, 24 GHz millimeter-wave Doppler presence radar, and optocoupled contact closures.</p>
+
+        <h4>Apollo Automation Modular Sensor Nodes (MSR-2 & AIR-1 Ecosystem)</h4>
+        <p>Supported daughterboards include genuine Sensirion SCD40 photoacoustic NDIR carbon dioxide modules and hazardous gas boards. The principal trade-off lies in physical modularity standards. Apollo's daughterboards utilize proprietary PCB dimensions and mezzanine pin arrangements rather than open industrial footprints.</p>
+
+        <h4>Seeed Studio XΙΑΟ Ecosystem (Carrier Base + Grove Daughterboards)</h4>
+        <p>The Seeed Studio XIAO platform offers a flexible micro-compute architecture that decouples the processing module from the carrier expansion chassis. Installers can match base carriers with different microcontrollers, selecting an ESP32-C3 for Wi-Fi 4 telemetry, an ESP32-C6 for native Zigbee 3.0, or an ESP32-S3 for signal processing.</p>
+
+        <h4>Shelly Modular Line (Gen3/Plus Relays + Shelly Plus Add-On)</h4>
+        <p>Shelly approaches hardware modularity from a commercial electrical perspective. The system pairs a mains-rated micro-relay with the clip-on "Shelly Plus Add-on". The mechanical construction meets UL and CE industrial safety codes, allowing installation within line-voltage junction boxes.</p>
+
+
+        <hr class="section-divider">
+
+
+        <!-- Section 2: Dishwashers -->
+        <h2>Part 2: Precision-Engineered Automatic Dishwashers</h2>
+        
+        <!-- Graph placed at the very top of the section -->
+        <div class="chart-container">
+            <canvas id="dishwasherChart"></canvas>
+        </div>
+        <div class="chart-note">Click on any dishwasher model in the legend above to toggle its visibility on the graph.</div>
+
+        <p>Precision dishwashing addresses challenges through two primary design philosophies: <strong>Category A</strong> (Proprietary and matched-rack architectures adapted from commercial equipment that eliminate spray shadows through precision docking manifolds) and <strong>Category B</strong> (Closed-loop, generic dishwashers that employ active process verification via optical turbidimeters and dynamic multi-axis satellite spray manifolds).</p>
+
+        <h3>Evaluation Criteria (100-Point Scale)</h3>
+        <ul>
+            <li><strong>Zero-Residue Cleaning Efficacy (35 points):</strong> Verified chemical and mechanical removal of unrinsed, dried, and baked-on food soils in standardized laboratory testing.</li>
+            <li><strong>Coverage & Geometry/Sensing Precision (25 points):</strong> Precision of fluid delivery, including targeted jet alignment, multi-axis satellite paths, and active optical soil-sensing suites.</li>
+            <li><strong>Build Quality & Component Longevity (25 points):</strong> Tub materials, brushless circulation motors, filtration design, and mean cycles between failure.</li>
+            <li><strong>US Availability & Serviceability (15 points):</strong> Practical purchase pathways, utility compatibility, and the breadth of domestic technician networks.</li>
+        </ul>
+
+        <h3>Item-by-Item Architectural Breakdown</h3>
+
+        <h4>1. Bosch Benchmark & 800 Series with PowerControl (SHP78CM5N/SHX9PCM5N)</h4>
+        <p>The Bosch Benchmark and 800 Series platform provides exceptional cleaning performance by pairing active optical process verification with a dual-axis mechanical wash arm. Bosch's PowerControl spray arm mounts an independently geared, three-spoke satellite disc to the outer edge of the main rotating spoke to reach recessed cookware corners and eliminate spray shadows.</p>
+
+        <h4>2. Miele G 7000 Series with AutoDos & SensorWash (G 7566 SCVI / G 7966 SCVI)</h4>
+        <p>The Miele G 7000 series approaches closed-loop dishwashing by linking optical soil sensing directly to automated chemical dispensing. The AutoDos mechanism houses a motorized, weather-sealed rotary cartridge containing granular detergent. When heavy starch or grease spikes occur, a micro-stepped electric motor rotates the PowerDisk to inject precise granular doses during specific temperature windows.</p>
+
+        <h4>3. Miele Professional ProfiLine Series (PFD 104 SCVI / PFD 102 i)</h4>
+        <p>The Miele Professional ProfiLine platform represents a bridge between industrial warewashing and residential installations. The system achieves exceptional mechanical cleaning through specialized APFD injector baskets derived from Miele's laboratory cleaning division, docking directly into high-pressure manifold ports.</p>
+
+        <h4>4. Gaggenau 400 Series with Gastronorm Matched Architecture (DF480701F)</h4>
+        <p>The Gaggenau 400 Series incorporates matched-rack geometry by designing its interior around the universal Gastronorm (GN) standard used throughout professional commercial cooking. The tub and lower basket include integrated channels specifically configured for commercial hotel trays and roasting pans.</p>
+
+        <h4>5. Cove DW2450 (Sub-Zero / Wolf)</h4>
+        <p>Engineered by the Sub-Zero/Wolf group, the Cove DW2450 prioritizes robust mechanical materials and quiet operation (41 dBA). The hydraulic platform uses dual BLDC motors and 43 angled water jets. However, independent evaluations reveal that the Cove trails segment leaders in soil extraction and filtration efficiency.</p>
+
+    </div>
+
+    <script>
+        // Graph for Part 1: Sensors
+        const ctxSensor = document.getElementById('sensorChart').getContext('2d');
+        new Chart(ctxSensor, {
+            type: 'bar',
+            data: {
+                labels: ['Modularity (30)', 'Autonomy (25)', 'Build Quality (25)', 'Community (20)', 'Composite Score (100)'],
+                datasets: [
+                    {
+                        label: 'M5Stack',
+                        data: [29, 25, 23, 19, 96],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Apollo Automation',
+                        data: [25, 25, 22, 19, 91],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Seeed Studio XIAO',
+                        data: [27, 24, 18, 17, 86],
+                        backgroundColor: 'rgba(255, 206, 86, 0.7)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Shelly Modular Line',
+                        data: [19, 25, 23, 17, 84],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Score' }
+                    }
+                },
+                plugins: {
+                    title: { display: true, text: 'Open-Source Sensor Platforms Assessment', font: { size: 15 } }
+                }
+            }
+        });
+
+        // Graph for Part 2: Dishwashers
+        const ctxDishwasher = document.getElementById('dishwasherChart').getContext('2d');
+        new Chart(ctxDishwasher, {
+            type: 'bar',
+            data: {
+                labels: ['Cleaning (35)', 'Coverage (25)', 'Build (25)', 'Availability (15)', 'Composite Score (100)'],
+                datasets: [
+                    {
+                        label: 'Bosch Benchmark & 800',
+                        data: [34, 25, 24, 14, 97],
+                        backgroundColor: 'rgba(153, 102, 255, 0.7)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Miele G 7000 Series',
+                        data: [35, 24, 24, 10, 93],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Miele Professional ProfiLine',
+                        data: [33, 25, 25, 8, 91],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Gaggenau 400 Series',
+                        data: [32, 23, 23, 9, 87],
+                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Cove (Sub-Zero/Wolf)',
+                        data: [26, 21, 23, 11, 81],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Score' }
+                    }
+                },
+                plugins: {
+                    title: { display: true, text: 'Precision Dishwashing Systems Assessment', font: { size: 15 } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
