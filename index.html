@@ -63,6 +63,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 25px;
         }
         p, li { 
             margin-bottom: 12px; 
@@ -76,7 +77,7 @@
             font-size: 0.9rem;
             border: 1px solid #c8e6c9;
         }
-        .cost-details {
+        .info-details {
             background-color: #fcfcfc;
             border-left: 4px solid var(--cost-color);
             padding: 10px 15px;
@@ -84,9 +85,13 @@
             font-size: 0.95rem;
             color: #555;
         }
-        .cost-details ul {
+        .info-details ul {
             margin: 5px 0 0 0;
             padding-left: 20px;
+        }
+        .feature-highlight {
+            font-weight: 600;
+            color: #d35400;
         }
         .summary-box {
             background-color: var(--highlight-bg);
@@ -99,14 +104,39 @@
             margin-top: 0;
             color: var(--primary-color);
         }
-        .chart-container {
-            position: relative;
+        .filtration-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .filtration-box h4 {
+            color: #856404;
+            margin-top: 0;
+            border: none;
+        }
+        .chart-wrapper {
             margin: 20px 0 30px 0;
-            height: 450px;
+        }
+        .chart-container-main {
+            position: relative;
+            height: 350px;
             width: 100%;
             background: #fafafa;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 8px 8px 0 0;
+            padding: 15px;
+            box-sizing: border-box;
+            border-bottom: none;
+        }
+        .chart-container-totals {
+            position: relative;
+            height: 200px;
+            width: 100%;
+            background: #fdfdfd;
+            border: 1px solid #ddd;
+            border-radius: 0 0 8px 8px;
             padding: 15px;
             box-sizing: border-box;
         }
@@ -114,7 +144,7 @@
             text-align: center;
             font-size: 0.85em;
             color: #666;
-            margin-top: -20px;
+            margin-top: 10px;
             margin-bottom: 30px;
             font-style: italic;
         }
@@ -129,8 +159,8 @@
             .container {
                 padding: 15px;
             }
-            .chart-container {
-                height: 350px;
+            .chart-container-main {
+                height: 300px;
                 padding: 5px;
             }
             h1 {
@@ -149,22 +179,33 @@
 
         <div class="summary-box">
             <h3>Quick Summary & Top Recommendations</h3>
-            <p>Scalable physical computing and automated sanitary engineering share a core architectural challenge: balancing modular hardware versatility with deterministic mechanical execution. We have evaluated these systems across strict technical parameters and integrated a new <strong>Cost-Effectiveness & Value</strong> metric to establish definitive hardware recommendations.</p>
+            <p>Scalable physical computing and automated sanitary engineering share a core architectural challenge: balancing modular hardware versatility with deterministic mechanical execution. We have evaluated these systems across strict technical parameters, integrating financial value and deep installation/plumbing compatibility metrics.</p>
             
+            <div class="filtration-box">
+                <h4>Important Distinction: Grinders vs. Filters</h4>
+                <p>A core architectural difference in modern dishwashing is the food removal mechanism. Some domestic models use a <strong>Hard Food Disposer (Grinder)</strong>—a loud, motorized blade system that requires no maintenance but generates significant noise. Conversely, <strong>ALL precision models evaluated in this report are filter-based.</strong> To achieve whisper-quiet acoustics (under 45 dBA), they utilize ultra-fine micro-mesh filters. To offset manual cleaning, many employ hybrid mechanical features at the bottom of the tub, such as continuous active filtration or automatic bypass flushing.</p>
+            </div>
+
             <h4>🏆 Top Sensor Platform: M5Stack Modular Sensor System</h4>
             <p>The definitive recommendation for large-scale deployments. Firmware definitions are deeply integrated into upstream ESPHome, requiring zero subscriptions while utilizing standardized Grove interconnects. At an average node cost of $30, it delivers unparalleled ROI.</p>
 
             <h4>🏆 Top Dishwasher: Bosch Benchmark & 800 Series</h4>
-            <p>The premier recommendation for uncompromised warewashing. Bosch eliminates spray shadows through a dual-axis PowerControl satellite wash arm. Averaging roughly $1,699, it drastically undercuts commercial competitors while delivering superior 99.97% clean scores.</p>
+            <p>The premier recommendation for uncompromised warewashing. Bosch eliminates spray shadows through a dual-axis PowerControl satellite wash arm. Averaging roughly $1,699, it undercuts commercial competitors while delivering superior cleaning scores, integrated AquaStop leak protection, and highly adaptable side-mounting for older cabinets.</p>
         </div>
 
         <!-- Section 1: Home Automation -->
         <h2>Part 1: Modular Open-Source Home Monitoring</h2>
         
-        <div class="chart-container">
-            <canvas id="sensorChart"></canvas>
+        <div class="chart-wrapper">
+            <!-- Split charts to fix scaling issues -->
+            <div class="chart-container-main">
+                <canvas id="sensorCategoryChart"></canvas>
+            </div>
+            <div class="chart-container-totals">
+                <canvas id="sensorTotalChart"></canvas>
+            </div>
+            <div class="chart-note">The top graph isolates category metrics (35 pt scale), while the bottom graph compares overall Total Composites (125 pt scale) for better visibility.</div>
         </div>
-        <div class="chart-note">Click on any platform name in the legend above to toggle its visibility. Note the new 125-point scale reflecting Cost/Value.</div>
 
         <p>Deploying twenty to fifty sensing nodes across a residential infrastructure exposes the shortcomings of closed consumer hardware. True infrastructure-grade deployment requires a standardized base compute engine supporting hot-swappable daughterboards without cloud intermediaries.</p>
 
@@ -184,7 +225,7 @@
             <span class="cost-badge">Avg Node: $30.00</span>
         </h4>
         <p>The M5Stack hardware ecosystem achieves the highest composite score by leveraging standardized interconnects across an extensive peripheral library. The platform centers on compact ESP32-S3 base compute engines interfaced through 4-pin HY2.0-4P locking Grove connectors.</p>
-        <div class="cost-details">
+        <div class="info-details">
             <strong>Financial Breakdown (Value Score: 24/25):</strong>
             <ul>
                 <li>Base Unit Range: $7.50 – $10.00</li>
@@ -198,7 +239,7 @@
             <span class="cost-badge">Avg Node: $17.00</span>
         </h4>
         <p>The Seeed Studio XIAO platform offers a flexible micro-compute architecture that decouples the processing module from the carrier expansion chassis. Installers can match base carriers with ESP32-C3, C6, or S3 microcontrollers.</p>
-        <div class="cost-details">
+        <div class="info-details">
             <strong>Financial Breakdown (Value Score: 25/25):</strong>
             <ul>
                 <li>Compute Unit Range: $4.99 – $7.50</li>
@@ -212,7 +253,7 @@
             <span class="cost-badge">Avg Node: $32.00</span>
         </h4>
         <p>Shelly approaches hardware modularity from a commercial electrical perspective. The system pairs a mains-rated micro-relay with the clip-on "Shelly Plus Add-on", meeting UL and CE industrial safety codes.</p>
-        <div class="cost-details">
+        <div class="info-details">
             <strong>Financial Breakdown (Value Score: 22/25):</strong>
             <ul>
                 <li>Relay Unit Range: $16.00 – $22.00</li>
@@ -226,7 +267,7 @@
             <span class="cost-badge">Avg Node: $61.00</span>
         </h4>
         <p>Supported daughterboards include genuine Sensirion SCD40 photoacoustic NDIR modules. The principal trade-off lies in physical modularity standards; Apollo utilizes proprietary PCB dimensions.</p>
-        <div class="cost-details">
+        <div class="info-details">
             <strong>Financial Breakdown (Value Score: 18/25):</strong>
             <ul>
                 <li>Base Unit Range: $34.99 – $49.99</li>
@@ -240,19 +281,26 @@
         <!-- Section 2: Dishwashers -->
         <h2>Part 2: Precision-Engineered Automatic Dishwashers</h2>
         
-        <div class="chart-container">
-            <canvas id="dishwasherChart"></canvas>
+        <div class="chart-wrapper">
+            <!-- Split charts to fix scaling issues -->
+            <div class="chart-container-main">
+                <canvas id="dishwasherCategoryChart"></canvas>
+            </div>
+            <div class="chart-container-totals">
+                <canvas id="dishwasherTotalChart"></canvas>
+            </div>
+            <div class="chart-note">The top graph isolates category metrics (35 pt scale) so they are not dwarfed by the overall 150-point Total Composites shown in the bottom horizontal graph.</div>
         </div>
-        <div class="chart-note">Click on any dishwasher model in the legend above to toggle its visibility. Note the new 125-point scale reflecting Cost/Value.</div>
 
         <p>Precision dishwashing addresses challenges through two primary design philosophies: Category A (matched-rack commercial adaptations) and Category B (closed-loop, generic dishwashers with active process verification).</p>
 
-        <h3>Evaluation Criteria (125-Point Scale)</h3>
+        <h3>Evaluation Criteria (Expanded 150-Point Scale)</h3>
         <ul>
             <li><strong>Cleaning Efficacy (35 points):</strong> Verified mechanical removal of baked-on food soils.</li>
             <li><strong>Coverage & Sensing (25 points):</strong> Precision of fluid delivery and optical soil-sensing suites.</li>
             <li><strong>Build Quality (25 points):</strong> Tub materials, brushless motors, and filtration design.</li>
-            <li><strong>Cost-Effectiveness & Value (25 points):</strong> Feature-to-price ratio, long-term ROI, and acquisition cost relative to segment peers.</li>
+            <li><strong>Cost-Effectiveness & Value (25 points):</strong> Feature-to-price ratio, long-term ROI, and acquisition cost.</li>
+            <li><span class="feature-highlight">NEW - Installation, Plumbing & Leak Safety (25 points):</span> Dedicated scoring for active leak-stop detection systems, side-mounting cabinet hardware (to prevent drilling into brittle countertops), and legacy piping considerations (check valves and high-loop drain integration for older S-traps).</li>
             <li><strong>Availability (15 points):</strong> Utility compatibility and domestic technician networks.</li>
         </ul>
 
@@ -263,8 +311,10 @@
             <span class="cost-badge">Avg Est: $1,699</span>
         </h4>
         <p>The Bosch platform provides exceptional cleaning performance by pairing active optical process verification with a dual-axis mechanical wash arm to eliminate spray shadows. It offers the strongest balance of premium features to residential cost.</p>
-        <div class="cost-details">
-            <strong>Financial Breakdown (Value Score: 23/25):</strong>
+        <p><span class="feature-highlight">Filtration Type (Filter/Hybrid):</span> Utilizes a 3-stage micro-mesh filter. To minimize maintenance, it employs a hybrid self-cleaning bypass cylinder at the base that continuously flushes debris off the main screen during wash cycles.</p>
+        <p><span class="feature-highlight">Mounting & Plumbing Safety (25/25):</span> Includes the industry-leading 24/7 AquaStop system (base pan sensors and double-walled hoses) that instantly cuts water if a leak is detected. To prevent tipping, Bosch provides side-mounting brackets that screw into adjacent cabinetry rather than forcing installers to drill upward into brittle, aging particle board or quartz countertops. The integrated drain hose features a built-in high loop and check valve, preventing siphoning or backflow from older sink S-traps.</p>
+        <div class="info-details">
+            <strong>Financial Breakdown:</strong>
             <ul>
                 <li>800 Series Range: $1,099 – $1,499</li>
                 <li>Benchmark Series Range: $1,799 – $2,299</li>
@@ -273,16 +323,18 @@
         </div>
 
         <h4>
-            2. Cove DW2450 (Sub-Zero / Wolf) 
-            <span class="cost-badge">Avg Est: $2,850</span>
+            2. NEW: Bosch 500 Series
+            <span class="cost-badge">Avg Est: $999</span>
         </h4>
-        <p>Engineered by the Sub-Zero/Wolf group, the Cove DW2450 prioritizes robust mechanical materials and quiet operation. However, independent evaluations reveal that the Cove trails segment leaders in soil extraction efficiency despite its premium price.</p>
-        <div class="cost-details">
-            <strong>Financial Breakdown (Value Score: 19/25):</strong>
+        <p>The 500 series serves as the highly accessible entry point to premium warewashing. While it trades the 800 series' CrystalDry system for the AutoAir (door-pop) drying method, it retains the stainless steel tub, PrecisionWash sensors, and heavy-duty mechanical build.</p>
+        <p><span class="feature-highlight">Filtration Type (Filter/Hybrid):</span> Uses the exact same 3-stage manual micro-mesh filter and self-cleaning bypass hybrid design as the 800 series.</p>
+        <p><span class="feature-highlight">Mounting & Plumbing Safety (25/25):</span> It scores perfectly in safety, retaining the identical 24/7 AquaStop leak containment system. It also includes flexible top-and-side mounting brackets, allowing secure anchoring to cabinets without stressing delicate countertops, and handles legacy plumbing retrofits smoothly via its standard check-valve drain assembly.</p>
+        <div class="info-details">
+            <strong>Financial Breakdown:</strong>
             <ul>
-                <li>Base Model Range: $2,600 – $2,900</li>
-                <li>Panel-Ready Range: $2,900 – $3,100</li>
-                <li>Overall Category Range: $2,600 – $3,100</li>
+                <li>Base Model Range: $899 – $950</li>
+                <li>Premium Finishes/Handle Range: $950 – $1,150</li>
+                <li>Overall Category Range: $899 – $1,150</li>
             </ul>
         </div>
 
@@ -290,9 +342,11 @@
             3. Miele G 7000 Series 
             <span class="cost-badge">Avg Est: $3,049</span>
         </h4>
-        <p>The Miele G 7000 series approaches closed-loop dishwashing by linking optical soil sensing directly to automated chemical dispensing. The AutoDos mechanism houses a motorized, weather-sealed rotary cartridge containing granular detergent.</p>
-        <div class="cost-details">
-            <strong>Financial Breakdown (Value Score: 17/25):</strong>
+        <p>The Miele G 7000 series approaches closed-loop dishwashing by linking optical soil sensing directly to automated chemical dispensing via its AutoDos motorized powder disk.</p>
+        <p><span class="feature-highlight">Filtration Type (Filter/Hybrid):</span> Filter-based. Uses a triple-stage micro-filtration system with a hybrid active auto back-flushing mechanism. The SensorWash system monitors turbidity and flushes the filter mid-cycle if heavy grease or starch spikes are detected.</p>
+        <p><span class="feature-highlight">Mounting & Plumbing Safety (24/25):</span> Features the Miele Waterproof System, a highly reliable double-solenoid valve that cuts water at the tap in the event of a fault. Flexible side-mounting hardware is supported. Miele's built-in non-return valve protects against old plumbing backflow, though Miele's installation specs for high-loop dimensions are incredibly strict and less forgiving in tight retrofits.</p>
+        <div class="info-details">
+            <strong>Financial Breakdown:</strong>
             <ul>
                 <li>Standard 7000 Models: $2,299 – $2,899</li>
                 <li>Premium 7000 Models: $2,999 – $3,799</li>
@@ -304,9 +358,11 @@
             4. Gaggenau 400 Series 
             <span class="cost-badge">Avg Est: $3,500</span>
         </h4>
-        <p>The Gaggenau 400 Series incorporates matched-rack geometry by designing its interior around the universal Gastronorm (GN) standard. The tub and lower basket include integrated channels specifically configured for commercial hotel trays.</p>
-        <div class="cost-details">
-            <strong>Financial Breakdown (Value Score: 15/25):</strong>
+        <p>The Gaggenau 400 Series incorporates matched-rack geometry by designing its interior around the universal Gastronorm (GN) standard, providing integrated channels specifically configured for commercial hotel trays.</p>
+        <p><span class="feature-highlight">Filtration Type (Filter):</span> Employs a 3-stage manual micro-mesh filter. As it utilizes the BSH platform, it requires minimal manual maintenance but lacks a mechanical grinder.</p>
+        <p><span class="feature-highlight">Mounting & Plumbing Safety (24/25):</span> Produced by the BSH group, Gaggenau benefits from the same fundamental AquaStop leak protection logic and heavy-duty side-mount adaptability to protect countertops. Its drainage system easily interfaces with older drain line infrastructure without siphoning.</p>
+        <div class="info-details">
+            <strong>Financial Breakdown:</strong>
             <ul>
                 <li>Standard Models: $3,200 – $3,450</li>
                 <li>Panel/Custom Models: $3,500 – $3,800</li>
@@ -318,9 +374,11 @@
             5. Miele Professional ProfiLine 
             <span class="cost-badge">Avg Est: $4,825</span>
         </h4>
-        <p>The Miele Professional ProfiLine achieves exceptional mechanical cleaning through specialized APFD injector baskets derived from Miele's laboratory division. While powerful, the commercial price tag severely limits mainstream residential value.</p>
-        <div class="cost-details">
-            <strong>Financial Breakdown (Value Score: 10/25):</strong>
+        <p>The Miele Professional ProfiLine achieves exceptional mechanical cleaning through specialized APFD injector baskets docking directly into high-pressure manifold ports.</p>
+        <p><span class="feature-highlight">Filtration Type (Filter):</span> Designed for commercial throughput, it uses a heavy-duty stainless steel micro-screen basket rather than a grinder to maintain rapid turnaround times.</p>
+        <p><span class="feature-highlight">Mounting & Plumbing Safety (24/25):</span> Integrates commercial-grade leak containment and industrial-strength side anti-tip anchors. However, because it is a commercial unit, its plumbing integration is highly rigorous; retrofitting it to a simple, older residential S-trap is often discouraged in favor of dedicated standpipes.</p>
+        <div class="info-details">
+            <strong>Financial Breakdown:</strong>
             <ul>
                 <li>120V Models: $4,500 – $4,850</li>
                 <li>240V/Commercial Models: $4,850 – $5,150</li>
@@ -328,43 +386,53 @@
             </ul>
         </div>
 
+        <h4>
+            6. Cove DW2450 (Sub-Zero / Wolf) 
+            <span class="cost-badge">Avg Est: $2,850</span>
+        </h4>
+        <p>Engineered by the Sub-Zero/Wolf group, the Cove DW2450 prioritizes robust mechanical materials and quiet operation (41 dBA).</p>
+        <p><span class="feature-highlight">Filtration Type (Filter/Hybrid):</span> Employs a robust 4-stage stainless steel filtration system. It uses a hybrid continuous active filtration cycle driven by a dedicated pump to trap soils without a grinder.</p>
+        <p><span class="feature-highlight">Mounting & Plumbing Safety (22/25):</span> Includes a standard base-pan float switch to detect leaks, though it lacks the advanced hose-in-hose shutoff features found in the German brands. It natively includes side-mounting clips to secure the unit without stressing fragile countertops, and its high loops adequately prevent sink drainage from backing up into the tub.</p>
+        <div class="info-details">
+            <strong>Financial Breakdown:</strong>
+            <ul>
+                <li>Base Model Range: $2,600 – $2,900</li>
+                <li>Panel-Ready Range: $2,900 – $3,100</li>
+                <li>Overall Category Range: $2,600 – $3,100</li>
+            </ul>
+        </div>
+
     </div>
 
     <script>
-        // Graph for Part 1: Sensors (Out of 125 Total)
-        const ctxSensor = document.getElementById('sensorChart').getContext('2d');
-        new Chart(ctxSensor, {
+        // --- SENSORS ---
+        
+        // 1. Sensor Categories Graph (Max 35 points)
+        const ctxSensorCat = document.getElementById('sensorCategoryChart').getContext('2d');
+        new Chart(ctxSensorCat, {
             type: 'bar',
             data: {
-                labels: ['Modularity (30)', 'Autonomy (25)', 'Build (25)', 'Value/Cost (25)', 'Community (20)', 'TOTAL (125)'],
+                labels: ['Modularity (30)', 'Autonomy (25)', 'Build (25)', 'Value/Cost (25)', 'Community (20)'],
                 datasets: [
                     {
-                        label: 'M5Stack (Avg $30)',
-                        data: [29, 25, 23, 24, 19, 120],
-                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
+                        label: 'M5Stack',
+                        data: [29, 25, 23, 24, 19],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)'
                     },
                     {
-                        label: 'Seeed Studio XIAO (Avg $17)',
-                        data: [27, 24, 18, 25, 17, 111],
-                        backgroundColor: 'rgba(255, 206, 86, 0.7)',
-                        borderColor: 'rgba(255, 206, 86, 1)',
-                        borderWidth: 1
+                        label: 'Seeed Studio XIAO',
+                        data: [27, 24, 18, 25, 17],
+                        backgroundColor: 'rgba(255, 206, 86, 0.7)'
                     },
                     {
-                        label: 'Apollo Automation (Avg $61)',
-                        data: [25, 25, 22, 18, 19, 109],
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
+                        label: 'Apollo Automation',
+                        data: [25, 25, 22, 18, 19],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)'
                     },
                     {
-                        label: 'Shelly Line (Avg $32)',
-                        data: [19, 25, 23, 22, 17, 106],
-                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
+                        label: 'Shelly Line',
+                        data: [19, 25, 23, 22, 17],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)'
                     }
                 ]
             },
@@ -374,64 +442,90 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 125,
+                        max: 35,
                         title: { display: true, text: 'Points' }
                     }
                 },
                 plugins: {
-                    title: { display: true, text: 'Sensor Platforms Assessment (incl. Cost/Value)', font: { size: 15 } },
-                    tooltip: {
-                        callbacks: {
-                            footer: function(tooltipItems) {
-                                return 'Click legend to toggle visibility.';
-                            }
-                        }
-                    }
+                    title: { display: true, text: 'Sensor Platforms: Category Scores', font: { size: 15 } }
                 }
             }
         });
 
-        // Graph for Part 2: Dishwashers (Out of 125 Total)
-        const ctxDishwasher = document.getElementById('dishwasherChart').getContext('2d');
-        new Chart(ctxDishwasher, {
+        // 2. Sensor Totals Graph (Horizontal, Max 125)
+        const ctxSensorTotal = document.getElementById('sensorTotalChart').getContext('2d');
+        new Chart(ctxSensorTotal, {
             type: 'bar',
             data: {
-                labels: ['Cleaning (35)', 'Coverage (25)', 'Build (25)', 'Value/Cost (25)', 'Availability (15)', 'TOTAL (125)'],
+                labels: ['M5Stack', 'Seeed Studio', 'Apollo', 'Shelly'],
+                datasets: [{
+                    label: 'Total Composite Score (Out of 125)',
+                    data: [120, 111, 109, 106],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(255, 99, 132, 0.7)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 125
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Overall Score Rankings', font: { size: 14 } }
+                }
+            }
+        });
+
+
+        // --- DISHWASHERS ---
+
+        // 1. Dishwasher Categories Graph (Max 40 points to fit 35 comfortably)
+        const ctxDishCat = document.getElementById('dishwasherCategoryChart').getContext('2d');
+        new Chart(ctxDishCat, {
+            type: 'bar',
+            data: {
+                labels: ['Cleaning (35)', 'Coverage (25)', 'Build (25)', 'Value/Cost (25)', 'Safety/Plumb (25)', 'Availability (15)'],
                 datasets: [
                     {
-                        label: 'Bosch Benchmark/800 (Avg $1,699)',
-                        data: [34, 25, 24, 23, 14, 120],
-                        backgroundColor: 'rgba(153, 102, 255, 0.7)',
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        borderWidth: 1
+                        label: 'Bosch Benchmark/800',
+                        data: [34, 25, 24, 23, 25, 14],
+                        backgroundColor: 'rgba(153, 102, 255, 0.7)'
                     },
                     {
-                        label: 'Miele G 7000 (Avg $3,049)',
-                        data: [35, 24, 24, 17, 10, 110],
-                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
+                        label: 'Bosch 500 Series',
+                        data: [32, 23, 22, 25, 25, 15],
+                        backgroundColor: 'rgba(46, 204, 113, 0.7)'
                     },
                     {
-                        label: 'Gaggenau 400 (Avg $3,500)',
-                        data: [32, 23, 23, 15, 9, 102],
-                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
-                        borderColor: 'rgba(255, 159, 64, 1)',
-                        borderWidth: 1
+                        label: 'Miele G 7000',
+                        data: [35, 24, 24, 17, 24, 10],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)'
                     },
                     {
-                        label: 'Miele ProfiLine (Avg $4,825)',
-                        data: [33, 25, 25, 10, 8, 101],
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
+                        label: 'Gaggenau 400',
+                        data: [32, 23, 23, 15, 24, 9],
+                        backgroundColor: 'rgba(255, 159, 64, 0.7)'
                     },
                     {
-                        label: 'Cove (Avg $2,850)',
-                        data: [26, 21, 23, 19, 11, 100],
-                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
+                        label: 'Miele ProfiLine',
+                        data: [33, 25, 25, 10, 24, 8],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)'
+                    },
+                    {
+                        label: 'Cove',
+                        data: [26, 21, 23, 19, 22, 11],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)'
                     }
                 ]
             },
@@ -441,12 +535,49 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 125,
+                        max: 40,
                         title: { display: true, text: 'Points' }
                     }
                 },
                 plugins: {
-                    title: { display: true, text: 'Precision Dishwashing Assessment (incl. Cost/Value)', font: { size: 15 } }
+                    title: { display: true, text: 'Dishwashing Systems: Category Scores', font: { size: 14 } }
+                }
+            }
+        });
+
+        // 2. Dishwasher Totals Graph (Horizontal, Max 150)
+        const ctxDishTotal = document.getElementById('dishwasherTotalChart').getContext('2d');
+        new Chart(ctxDishTotal, {
+            type: 'bar',
+            data: {
+                labels: ['Bosch 800/BM', 'Bosch 500', 'Miele G 7000', 'Gaggenau 400', 'Miele ProfiLine', 'Cove'],
+                datasets: [{
+                    label: 'Total Composite Score (Out of 150)',
+                    data: [145, 142, 134, 126, 125, 122],
+                    backgroundColor: [
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(46, 204, 113, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 159, 64, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(255, 99, 132, 0.7)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 150
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Overall Score Rankings', font: { size: 14 } }
                 }
             }
         });
